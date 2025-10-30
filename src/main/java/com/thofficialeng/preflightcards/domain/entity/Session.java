@@ -25,7 +25,7 @@ public class Session {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private Tone tone = Tone.STUDENT;
+    private Tone tone = Tone.CONCISE;
 
     @Column(nullable = false, updatable = false)
     private Instant createdAt = Instant.now();

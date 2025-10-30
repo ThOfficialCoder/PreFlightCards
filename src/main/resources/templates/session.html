@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><title>Session</title></head>
 <body>
+<h1 th:text="'Session ' + ${view.sessionId}"></h1>
 
+<div th:each="card : ${view.cards}">
+    <h2 th:text="${card.title}"></h2>
+    <ol>
+        <li th:each="b : ${card.bullets}" th:text="${b}"></li>
+    </ol>
+</div>
 </body>
 </html>
