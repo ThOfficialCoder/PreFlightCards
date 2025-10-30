@@ -1,10 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <h1>Hello</h1>
+    <form action="/session" method="post">
+        <label for="topic">Topic</label>
+        <input type="text" id="topic" name="topic" required/><br/>
+        <label for="notes">Notes</label>
+        <input type="text" id="notes" name="notes"/><br>
+        <label for="optional-url">Optional URL</label>
+        <input type="url" id="optional-url" name="optional-url"/><br>
+        <label for="tone">Tone</label>
+        <input type="checkbox" id="tone" name="tone"/>
+        <input type="submit" name="submit" />
+    </form>
 </body>
 </html>
