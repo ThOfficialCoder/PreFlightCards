@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Focus Page</title>
+    <link rel="stylesheet" th:href="@{/css/focus.css}">
+    <script th:src="@{/js/focus.js}"></script>
 </head>
 <body>
+<div id="card-track">
+    <div class="toolbar">
+        <button id="prevBtn" type="button" aria-controls="card-track">Prev Card</button>
 
+        <output id="progressLabel" aria-live="polite">1/5</output>
+        <progress id="progress" value="1" max="5" aria-hidden="true"></progress>
+
+        <button id="nextBtn" type="button" aria-controls="card-track">Next Card</button>
+        <!-- Prefer a real link for a JS-off fallback -->
+        <a id="exitBtn" th:href="@{/s/{id}(id=${session.id})}">Back to all cards</a>
+    </div>
+
+    <ol>
+        <li class="focus-card is-active" id="card-0" data-card-index="0" aria-hidden="false">
+            <h2 tabindex="-1">Know in 30s</h2>
+            <!-- bullets go here -->
+        </li>
+
+        <li class="focus-card" id="card-1" data-card-index="1" aria-hidden="true">
+            <h2 tabindex="-1">Ask These</h2>
+        </li>
+
+        <li class="focus-card" id="card-2" data-card-index="2" aria-hidden="true">
+            <h2 tabindex="-1">Say This</h2>
+        </li>
+
+        <li class="focus-card" id="card-3" data-card-index="3" aria-hidden="true">
+            <h2 tabindex="-1">Quick Facts</h2>
+        </li>
+
+        <li class="focus-card" id="card-4" data-card-index="4" aria-hidden="true">
+            <h2 tabindex="-1">Next Steps</h2>
+        </li>
+    </ol>
+</div>
 </body>
 </html>

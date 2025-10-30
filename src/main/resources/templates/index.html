@@ -1,21 +1,74 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PreFlight Cards</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}" />
 </head>
 <body>
-    <form action="/session" method="post">
-        <label for="topic">Topic</label>
-        <input type="text" id="topic" name="topic" required/><br/>
-        <label for="notes">Notes</label>
-        <input type="text" id="notes" name="notes"/><br>
-        <label for="optional-url">Optional URL</label>
-        <input type="url" id="optional-url" name="optional-url"/><br>
-        <label for="tone">Tone</label>
-        <input type="checkbox" id="tone" name="Student"/>
-        <input type="checkbox" id="tone" name="Teacher"/>
-        <input type="submit" name="submit" />
-    </form>
+<main id="landing">
+    <header class="header">
+        <h1>Walk in prepared</h1>
+        <p>Paste a topic or link → get 5 cue cards in under 2 minutes.</p>
+    </header>
+
+    <section class="form-card">
+        <form th:action="@{/session}" method="post" novalidate>
+            <div class="form-grid">
+                <!-- Topic -->
+                <div class="form-row--full">
+                    <label for="topic">Topic <span class="visually-hidden">(required)</span></label>
+                    <input type="text" id="topic" name="topic" required
+                           placeholder="e.g., Dentist visit — tooth pain on left molar" />
+                    <div class="hint">Be specific: who/what is the chat about?</div>
+                </div>
+
+                <!-- Notes -->
+                <div class="form-row--full">
+                    <label for="notes">Notes (optional)</label>
+                    <textarea id="notes" name="notes"
+                              placeholder="Context, constraints, priorities…"></textarea>
+                    <div class="hint">Add anything you want the cards to consider.</div>
+                </div>
+
+                <!-- URL -->
+                <div class="form-row--full">
+                    <label for="url">Optional URL</label>
+                    <input type="url" id="url" name="url" placeholder="https://example.com/article" />
+                    <div class="hint">We’ll pull quick facts (names/dates/places) when possible.</div>
+                </div>
+
+                <!-- Tone -->
+                <div>
+                    <label for="tone">Tone</label>
+                    <select id="tone" name="tone">
+                        <option value="CONCISE" selected>Concise (default)</option>
+                        <option value="FRIENDLY">Friendly</option>
+                        <option value="BOLD">Bold</option>
+                        <option value="EMPATHETIC">Empathetic</option>
+                    </select>
+                    <div class="hint">Affects phrasing, not structure.</div>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="primary" type="submit">Make my 5 cards</button>
+            </div>
+
+            <!-- Examples (optional) -->
+            <div class="examples">
+                <span class="example-chip">Doctor: follow-up on lab results</span>
+                <span class="example-chip">Apartment viewing: must-ask questions</span>
+                <span class="example-chip">First date: thoughtful prompts</span>
+                <span class="example-chip">Parent-teacher: progress & next steps</span>
+            </div>
+        </form>
+    </section>
+
+    <footer class="footer">
+        <p>Privacy-first: no audio, no overlays. Your prep lives at a private link.</p>
+    </footer>
+</main>
 </body>
 </html>

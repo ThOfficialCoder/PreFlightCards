@@ -1,0 +1,189 @@
+/* index.css */
+
+/* ---- Theme (same tokens as focus.css) ---- */
+:root {
+    --bg: #0f1115;
+    --card: #171923;
+    --fg: #e6e9f0;
+    --muted: #9aa3b2;
+    --accent: #6ea8fe;
+    --accent-2: #a78bfa;
+    --ring: rgba(110,168,254,0.5);
+    --radius: 16px;
+    --shadow: 0 6px 24px rgba(0,0,0,0.28);
+}
+
+/* ---- Base ---- */
+* { box-sizing: border-box; }
+html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ---- Layout ---- */
+#landing {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 16px 64px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.header h1 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+    letter-spacing: .3px;
+}
+
+.header p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* ---- Card container for the form ---- */
+.form-card {
+    background: var(--card);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+}
+
+/* ---- Form ---- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px 20px;
+}
+
+.form-row--full {
+    grid-column: 1 / -1;
+}
+
+label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+input[type="text"],
+input[type="url"],
+select,
+textarea {
+    width: 100%;
+    padding: 12px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: #1b2030;
+    color: var(--fg);
+    outline: none;
+    transition: border-color .15s ease, box-shadow .15s ease;
+}
+
+textarea { min-height: 120px; resize: vertical; }
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: rgba(255,255,255,0.24);
+    box-shadow: 0 0 0 4px var(--ring);
+}
+
+.hint {
+    margin-top: 6px;
+    font-size: .9rem;
+    color: var(--muted);
+}
+
+.error {
+    margin-top: 6px;
+    font-size: .9rem;
+    color: #ff7b7b;
+}
+
+/* ---- CTA row ---- */
+.actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 8px;
+}
+
+button.primary {
+    appearance: none;
+    border: 1px solid rgba(255,255,255,0.12);
+    background: linear-gradient(180deg, #1d2340, #1a1f33);
+    color: var(--fg);
+    padding: 12px 16px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: .2px;
+}
+button.primary:hover {
+    border-color: rgba(255,255,255,0.2);
+    transform: translateY(-1px);
+}
+button.primary:focus-visible {
+    outline: 0;
+    box-shadow: 0 0 0 4px var(--ring);
+}
+button.primary:disabled {
+    opacity: .5; cursor: not-allowed; transform: none;
+}
+
+/* ---- Example chips / suggestions ---- */
+.examples {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.example-chip {
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: #111421;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* ---- Footer ---- */
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    color: var(--muted);
+    font-size: .9rem;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 720px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .actions { justify-content: stretch; }
+    button.primary { width: 100%; }
+}
+
+/* ---- Accessibility helpers ---- */
+.visually-hidden {
+    position: absolute !important;
+    height: 1px; width: 1px;
+    overflow: hidden; clip: rect(1px,1px,1px,1px);
+    white-space: nowrap; border: 0; padding: 0; margin: -1px;
+}
+
+/* ---- Print (keep it minimal) ---- */
+@media print {
+    body { background: #fff; color: #000; }
+    .form-card { box-shadow: none; border-color: #ccc; }
+    .actions, .footer a { display: none !important; }
+}
